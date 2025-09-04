@@ -76,10 +76,20 @@ export function StartCall({
         <Button
           size="lg"
           onClick={async () => {
+            try {
+              await navigator.mediaDevices.getUserMedia({ audio: true });
+            } catch (err) {
+              errorToast(
+                "No access to microphone. Check your connection and permissions."
+              );
+              return;
+            }
+
             const res = await createInterview({ jobInfoId: jobInfo.id });
             if (res.error) {
               return errorToast(res.message);
             }
+
             setInterviewId(res.id);
 
             connect({
