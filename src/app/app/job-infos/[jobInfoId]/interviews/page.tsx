@@ -11,6 +11,7 @@ import { InterviewTable } from "@/drizzle/schema";
 import { getInterviewJobInfoTag } from "@/features/interviews/dbCache";
 import { JobInfoBackLink } from "@/features/jobInfos/components/JobInfoBackLink";
 import { getJobInfoIdTag } from "@/features/jobInfos/dbCache";
+import { formatDateTime } from "@/lib/formatters";
 import { getCurrentUser } from "@/services/clerk/lib/getCurrentUser";
 import { and, desc, eq, isNotNull } from "drizzle-orm";
 import { ArrowRightIcon, Loader2Icon, PlusIcon } from "lucide-react";
@@ -80,6 +81,9 @@ async function SuspendedPage({ jobInfoId }: { jobInfoId: string }) {
             <Card className="h-full">
               <div className="flex items-center justify-between h-full">
                 <CardHeader className="gap-1 flex-grow">
+                  <CardTitle className="text-lg">
+                    {formatDateTime(interview.createdAt)}
+                  </CardTitle>
                   <CardDescription>{interview.duration}</CardDescription>
                 </CardHeader>
                 <CardContent>
