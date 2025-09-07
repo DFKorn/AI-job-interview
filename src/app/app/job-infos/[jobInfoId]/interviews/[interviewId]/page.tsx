@@ -23,6 +23,8 @@ import { Suspense } from "react";
 import { CondensedMessages } from "@/services/hume/components/CondensedMessages";
 import { condenseChatMessages } from "@/services/hume/lib/condenseChatMessages";
 import { fetchChatMessages } from "@/services/hume/lib/api";
+import { ActionButton } from "@/components/ui/action-button";
+import { generateInterviewFeedback } from "@/features/interviews/actions";
 
 export default async function InterviewPage({
   params,
@@ -70,7 +72,11 @@ export default async function InterviewPage({
             fallback={<SkeletonButton className="w-32" />}
             result={(i) =>
               i.feedback == null ? (
-                <Button>Generate Feedback</Button>
+                <ActionButton
+                  action={generateInterviewFeedback.bind(null, i.id)}
+                >
+                  Generate Feedback
+                </ActionButton>
               ) : (
                 <Dialog>
                   <DialogTrigger asChild>
