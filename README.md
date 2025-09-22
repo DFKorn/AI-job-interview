@@ -11,7 +11,14 @@ AI powered job preparation platform
 - Tailwind CSS v.4
 - Shadcn
 - Zod
-
+- 
+### AI 
+#### Speech-language model
+- Hume AI - Empathic Voice Interface: Speech-to-speech (humeai/voice-react)
+### Text generation
+- AI SDK v5: Google Generative AI Provider (ai-sdk/google)
+- Model: Gemini 2.5 Flash
+  
 ### Authentication
 - Clerk
 
